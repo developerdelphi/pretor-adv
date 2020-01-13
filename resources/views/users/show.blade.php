@@ -1,17 +1,21 @@
-@extends('layouts.app')
-
-@section('title-header')
-    @component('components.title-header')
-        @slot('icon') fas fa-users fa-2x @endslot
-        Detalhes do Usuário - {{ $user->name }}
-    @endcomponent    
-@endsection
+@extends('layouts.pretor')
 
 @section('content')
+<div class="card shadow">
+  <div class="card-header">
+    <div class="float-right">
+      <a href="{{ route('users.create') }}" class="btn btn-sm btn-outline-success"><i class="fas fa-plus"></i></a>
+    </div>
+    <h3 class="card-title m-0 p-0">
+        <i class="fas fa-users"></i>
+        <span class="d-inline mr-2">Cadastro de Usuário</span>
+    </h3>
+  </div>
+  <div class="card-body">
     <dl class="row">
         <dt class="col-sm-2">Name:</dt>
         <dd class="col-sm-10">{{ $user->name }}</dd>
-        
+
         <dt class="col-sm-2">E-mail:</dt>
         <dd class="col-sm-10">{{ $user->email }}</dd>
     </dl>
@@ -28,15 +32,22 @@
             </form>
         </div>
     </div>
-    
+    <div class="">
+
+      <input data-inputmask="'alias': 'datetime'" />
+      <input data-inputmask="'mask': '9', 'repeat': 10, 'greedy' : false" />
+      <input data-inputmask="'mask': '99-9999999'" />
+
+    </div>
+
     <div class="row">
         <div class="col-sm-6">
-            <h4>Lista de Roles</h4>        
+            <h4>Lista de Roles</h4>
             <ul class="list-unstyled">
             @forelse($roles as $role)
-                <li>{{ $role }} <em></em></li>        
+                <li>{{ $role }} <em></em></li>
             @empty
-                <li><em>Nenhuma Role vinculada.</em></li>
+                <em>Nenhuma Role vinculada.</em>
             @endforelse
             </ul>
         </div>
@@ -44,15 +55,24 @@
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            <h4>Lista de Habilidades</h4>        
+            <h4>Lista de Permissões</h4>
             <dl class="row">
-            @forelse($abilities as $ability)
-                <dt class="col-sm-3">{{ $ability->name }}</dt>
-                <dd class="col-sm-3">{{ $ability->title }}</dd>
+            @forelse($permissions as $permission)
+                <dt class="col-sm-3">{{ $permission->name }}</dt>
+                <dd class="col-sm-3">{{ $permission->title }}</dd>
             @empty
-                <em>Nenhuma Role vinculada.</em>
-            @endforelse    
+                <em>Nenhuma Permissão vinculada.</em>
+            @endforelse
             </ul>
         </div>
     </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $(":input").inputmask();
+
+  });
+</script>
 @endsection

@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-
+//import Inputmask from "inputmask";
 window.Vue = require('vue');
 
 /**

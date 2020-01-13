@@ -16,7 +16,7 @@
         <thead>
             <th>Nome</th>
             <th>e-mail</th>
-            <th>Ações</th>
+            <th class="text-right">Ações</th>
         </thead>
         <tbody>
             @forelse($users as $user)

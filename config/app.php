@@ -180,6 +180,10 @@ return [
         */
         Kodeine\Acl\AclServiceProvider::class,
 
+        /*
+        * Sweet Alert 2
+        */
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
     ],
 
     /*
@@ -230,6 +234,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
     ],
 

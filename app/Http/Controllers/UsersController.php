@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+//use Alert;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Kodeine\Acl\Models\Eloquent\Role;
 
 class UsersController extends Controller
 {
@@ -15,7 +17,7 @@ class UsersController extends Controller
     public function index()
     {
       $users = User::paginate(5);
-      
+
       return view('users.index', compact('users'));
     }
 
@@ -26,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create')->withToastSuccess('Formulário Carregado!');
     }
 
     /**
@@ -37,7 +39,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //
     }
 
     /**
@@ -46,9 +48,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+      $user->hasRole('administrator');
+      $roles = Role::get();
+      $permissions = $user->getPermissions();
+      //\Alert::success('Success Title', 'Success Message');
+      return view('users.show',compact('user','roles','permissions'))->withToastSuccess('Task Created Successfully!');
     }
 
     /**
