@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+        * Kodeine ACL
+        */
+        Kodeine\Acl\AclServiceProvider::class,
+
     ],
 
     /*
