@@ -26,7 +26,7 @@
                 <td class="text-right">
                     <form action="{{ route('users.destroy', ['user'=> $user->id]) }}" method="post">
                         @csrf
-                        @method("PUT")
+                        @method("DELETE")
                         <div class="btn-group" role="group">
                             <a href="{{ route('users.show', ['user'=> $user->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-folder-open"></i></a>
                             <a href="{{ route('users.edit', ['user'=> $user->id]) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>

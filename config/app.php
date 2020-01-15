@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -184,6 +184,10 @@ return [
         * Sweet Alert 2
         */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        /*
+       * FormProvider criação de elementos de formulário
+       */
+        App\Providers\FormServiceProvider::class,
     ],
 
     /*

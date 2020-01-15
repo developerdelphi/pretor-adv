@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-//use Alert;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Kodeine\Acl\Models\Eloquent\Permission;
 use Kodeine\Acl\Models\Eloquent\Role;
 
 class UsersController extends Controller
@@ -16,9 +17,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-      $users = User::paginate(5);
+        $users = User::paginate(5);
 
-      return view('users.index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -37,9 +38,19 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-      //
+        try {
+            If( User::create($request->all())) {
+                $success = 'toast_success';
+                $message = 'Usuário cadastrado!';
+            }
+        } catch (Exception $e) {
+            $success = 'toast_error';
+            $message = $e->getMessage();
+        } finally {
+            return redirect()->route('users.index')->with($success, $message);
+        }
     }
 
     /**
@@ -50,11 +61,11 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-      $user->hasRole('administrator');
-      $roles = Role::get();
-      $permissions = $user->getPermissions();
-      //\Alert::success('Success Title', 'Success Message');
-      return view('users.show',compact('user','roles','permissions'))->withToastSuccess('Task Created Successfully!');
+        //$user->hasRole('administrator');
+        $roles =  $user->getRoles();
+        $permissions = $user->getPermissions();
+        //\Alert::success('Success Title', 'Success Message');
+        return view('users.show', compact('user', 'roles', 'permissions'))->with('success','Cadastro de usuário atualizado!!');
     }
 
     /**
@@ -63,9 +74,22 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $success = 'toast_success';
+        $message = 'Não foi possível realizar a consulta.';
+        try {
+            //$user = User::first($id);
+            $success = 'toast_success';
+            $message = 'Cadastro do usuário localizado.';
+            return view('users.edit', compact('user'))->with($success, $message);
+        } catch (Exception $e) {
+            $success = 'toast_error';
+            $message = $e->getMessage();
+            return redirect()->route('users.index')->with($success, $message);
+        } finally {
+            //
+        }
     }
 
     /**
@@ -75,9 +99,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user, Request $request)
     {
-        //
+        $success = 'toast_success';
+        $message = 'Não foi possível realizar a consulta.';
+
+        $user->update($request->all());
+
+        return redirect()->route('users.show', compact('user'))->with($success, $message);
     }
 
     /**
@@ -88,6 +117,15 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $user = User::destroy($id);
+            $success = 'toast_success';
+            $message = 'Usuário excluído com sucesso.';
+        } catch (Exception $e) {
+            $success = 'toast_error';
+            $message = $e->getMessage();
+        } finally {
+            return redirect()->route('users.index')->with($success, $message);
+        }
     }
 }
