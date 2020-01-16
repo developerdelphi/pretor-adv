@@ -35,7 +35,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                      <li>teste</li>
+                        <li>
+                            <a class="nav-link" href="{{ url('lawyer') }}">Advogado</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -74,36 +76,17 @@
             </div>
         </nav>
         <main class="container-fluid">
-          <div class="row mh-100">
-            <div class="col-sm-2 ml-0 pl-0">
-              <!-- Sidebar -->
-              <ul class="nav nav-pills flex-column bg-light shadow-sm border-top">
-                <li class="nav-item">
-                  <a class="nav-link {{ (request()->is('/')) ? 'active' : ''}}" href="{{ route('dashboard') }}">
-                    <i class="fas fa-project-diagram"></i>
-                    <span class="d-inline-block">Dashboard</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link {{ (request()->is('users*')) ? 'active' : ''}}" href="{{ route('users.index') }}">
-                    <i class="fas fa-users"></i>
-                    <span class="d-inline-block">Usuários</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link {{ (request()->is('processes*')) ? 'active' : ''}}" href="#">
-                    <i class="fas fa-folder-open"></i>
-                    <span class="d-inline-block">Processos</span>
-                  </a>
-                </li>
-              </ul>
-              <!-- end Sidebar -->
+            <div class="row mh-100">
+                <div class="col-sm-2 ml-0 pl-0">
+                <!-- Sidebar -->
+
+                <!-- end Sidebar -->
+                </div>
+                <div class="col-sm py-3">
+                @include('sweetalert::alert')
+                @yield('content')
+                </div>
             </div>
-            <div class="col-sm py-3">
-              @include('sweetalert::alert')
-              @yield('content')
-            </div>
-          </div>
         </main>
     </div>
   </div>

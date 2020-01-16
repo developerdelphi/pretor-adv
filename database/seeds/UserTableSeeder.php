@@ -3,7 +3,6 @@
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Kodeine\Acl\Models\Eloquent\Role;
 
 class UserTableSeeder extends Seeder
 {
@@ -19,7 +18,7 @@ class UserTableSeeder extends Seeder
             'email'     => 'leo@pretor.com.br',
             'password'  => Hash::make('password'),
         ]);
-
+    /*
         $roleAdmin = new Role();
         $roleAdmin->name = 'Administrador';
         $roleAdmin->slug = 'administrador';
@@ -31,5 +30,6 @@ class UserTableSeeder extends Seeder
         $roleAdvogado->slug = 'advogado';
         $roleAdvogado->description = 'Gerenciamento de Processos Relacionados ao Usuário';
         $roleAdvogado->save();
+    */
     }
 }

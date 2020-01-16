@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @parent
+    @include('components.menus.sidebar')
+@stop
+
 @section('title', 'Dashboard')
 
 @section('content_header')

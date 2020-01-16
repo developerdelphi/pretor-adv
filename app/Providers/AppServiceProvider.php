@@ -24,9 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      Schema::defaultStringLength(191);
-      $this->app->singleton(\Faker\Generator::class, function () {
-        return \Faker\Factory::create('pt_BR');
-      });
+        Schema::defaultStringLength(191);
+
+        $this->app->singleton(\Faker\Generator::class, function () {
+            return \Faker\Factory::create('pt_BR');
+        });
     }
 }

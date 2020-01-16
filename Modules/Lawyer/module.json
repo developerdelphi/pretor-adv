@@ -1,0 +1,13 @@
+{
+    "name": "Lawyer",
+    "alias": "lawyer",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Lawyer\\Providers\\LawyerServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

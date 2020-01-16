@@ -11,15 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::middleware('auth','menu')->group(function () {
-
-  Route::get('/', 'DashboardController@index')->name('dashboard');
-  Route::get('/home', 'DashboardController@index')->name('home');
-  Route::resource('users','UsersController');
+Route::prefix('lawyer')->group(function() {
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/', 'LawyerController@index');
+    });
 });

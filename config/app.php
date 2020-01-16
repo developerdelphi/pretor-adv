@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'pt_BR',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,11 +176,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-        * Kodeine ACL
-        */
-        //Kodeine\Acl\AclServiceProvider::class,
-
-        /*
         * Sweet Alert 2
         */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
@@ -188,6 +183,7 @@ return [
        * FormProvider criação de elementos de formulário
        */
         App\Providers\FormServiceProvider::class,
+
     ],
 
     /*
@@ -239,7 +235,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-
     ],
 
 ];
