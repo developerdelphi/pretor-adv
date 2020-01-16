@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Kodeine\Acl\Models\Eloquent\Permission;
-use Kodeine\Acl\Models\Eloquent\Role;
 
 class UsersController extends Controller
 {
@@ -62,8 +60,8 @@ class UsersController extends Controller
     public function show(User $user)
     {
         //$user->hasRole('administrator');
-        $roles =  $user->getRoles();
-        $permissions = $user->getPermissions();
+        $roles = []; // $user->getRoles();
+        $permissions = [];// $user->getPermissions();
         //\Alert::success('Success Title', 'Success Message');
         return view('users.show', compact('user', 'roles', 'permissions'))->with('success','Cadastro de usuário atualizado!!');
     }

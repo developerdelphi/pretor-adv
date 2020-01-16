@@ -178,7 +178,7 @@ return [
         /*
         * Kodeine ACL
         */
-        Kodeine\Acl\AclServiceProvider::class,
+        //Kodeine\Acl\AclServiceProvider::class,
 
         /*
         * Sweet Alert 2
