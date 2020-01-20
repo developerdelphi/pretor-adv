@@ -7,6 +7,7 @@
     value="{{ Arr::get($params, 'value') }}"
     class="form-control"
     placeholder="{{ Arr::get($params, 'placeholder') }}"
+    autofocus="{{ Arr::get($params, 'autofocus') }}"
     {{ Arr::get($params, 'required', false) ? 'required' : '' }}
   >
   <small class="text-danger">{{ $errors->first( Arr::get($params, 'name')) }}</small>

@@ -8,7 +8,7 @@
         </div>
         <h3 class="card-title m-0 p-0">
             <i class="fas fa-user-tie"></i>
-            <span class="d-inline mr-2">{!! config('lawyer.moduleTitle') !!}</span>
+            <span class="d-inline mr-2">Painel :: {!! config('lawyer.moduleTitle') !!}</span>
         </h3>
     </div>
     <div class="card-body">

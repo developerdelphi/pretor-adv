@@ -1,0 +1,51 @@
+edit
+---------------------
+<div class="row">
+    <div class="col-6">
+    @foreach($origin as $org)
+    {!! Form::radio('origin', $org, ($area->origin === $org) ? 1 : 0) !!} {!! $org !!}
+    @endforeach
+    </div>
+</div>
+
+-----------------
+show
+
+<dt class="col-sm-2">Origin da Área:</dt>
+<dd class="col-sm-10">{{ $area->origin }}</dd>
+
+--------------------
+create
+<div class="row">
+    <div class="col-6">
+        @foreach($origin as $org)
+        {!! Form::radio('origin', $org, true) !!} {!! $org !!}
+        @endforeach
+    </div>
+</div>
+------------------------------
+content for tbody change of the insert datatables
+
+                @forelse($areas as $area)
+                <tr>
+                    <td>{{ $area->name }}</td>
+
+                    <td class="text-right">
+                        <form action="{{ route('areas.destroy', ['area'=> $area->id]) }}" method="post">
+                            @csrf
+                            @method("DELETE")
+                            <div class="btn-group" role="group">
+                                <a href="{{ route('areas.show', ['area'=> $area->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-folder-open"></i></a>
+                                <a href="{{ route('areas.edit', ['area'=> $area->id]) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td>
+                        <h5 ><span class="badge badge-danger"> Áreas não localizadas. </span></h5>
+                    </td>
+                </tr>
+                @endforelse

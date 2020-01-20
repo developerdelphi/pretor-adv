@@ -26,6 +26,7 @@ class FormServiceProvider extends ServiceProvider
     {
         \Form::component('pretorInput', 'components.form.input', ['params','errors']);
         \Form::component('pretorEmail', 'components.form.email', ['params','errors']);
-        \Form::component('pretorSubmit', 'components.form.submit', ['label'=> null, 'attributes' => []]);      
+        \Form::component('pretorSelect', 'components.form.select', ['params','errors']);
+        \Form::component('pretorSubmit', 'components.form.submit', ['label'=> null, 'attributes' => []]);
     }
 }
