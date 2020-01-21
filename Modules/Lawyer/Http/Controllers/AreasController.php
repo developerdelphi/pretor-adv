@@ -24,11 +24,16 @@ class AreasController extends Controller
 
     public function search(Request $request){
         if($request->ajax()){
-            $areas = Area::first();
-            return response()->json([
-                'areas' => $areas
-            ], 200);
-
+            $areas = Area::all();
+            return Datatables::of(Area::query())
+                        ->addColumn('action', function ($row) {
+                            $btn = '<a href="\\{{ route(\'areas.show\',[\'areas\'=>1]) \\}}" class="edit btn btn-primary btn-sm">View</a>';
+                            return $btn;
+                        })
+                        ->rawColumns(['action'])
+                        ->make(true);
+        }else{
+            abort(404);
         }
 
 

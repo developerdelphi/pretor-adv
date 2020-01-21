@@ -46,7 +46,7 @@ class AreaRequest extends FormRequest
      * @return array
      */
 
-    Public function attributes()
+    public function attributes()
     {
         return[
             'name' => 'Nome da Área',

@@ -101,6 +101,8 @@ class LawyerServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [];
+        return [
+            //Yajra\Datatables\DatatablesServiceProvider::class,
+        ];
     }
 }

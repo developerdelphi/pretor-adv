@@ -5,14 +5,14 @@ namespace Modules\Lawyer\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Area extends Model
+class Process extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'archivy', 'state', 'situation'];
 
     public function kinds()
     {
-        return $this->hasMany(Kind::class);
+        return $this->belongsToMany(Kind::class);
     }
 }

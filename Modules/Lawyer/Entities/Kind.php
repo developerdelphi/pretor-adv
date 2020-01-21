@@ -15,4 +15,8 @@ class Kind extends Model
     {
         return $this->belongsTo(Area::class);
     }
+
+    public function processes(){
+        return $this->belongsToMany(Process::class);
+    }
 }

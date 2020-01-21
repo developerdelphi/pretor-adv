@@ -15,11 +15,32 @@
     <div class="card-body">
         <table class="table table-hover table-striped table-sm" id="pretor-datatable">
             <thead class="">
-                <th>#</th>
                 <th>Nome</th>
                 <th class="text-right pr-2">Ações</th>
             </thead>
             <tbody>
+                @forelse($areas as $area)
+                <tr>
+                    <td>{{ $area->name }}</td>
+                    <td class="text-right">
+                        <form action="{{ route('areas.destroy', ['area'=> $area->id]) }}" method="post">
+                            @csrf
+                            @method("DELETE")
+                            <div class="btn-group" role="group">
+                                <a href="{{ route('areas.show', ['area'=> $area->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-folder-open"></i></a>
+                                <a href="{{ route('areas.edit', ['area'=> $area->id]) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td>
+                        <h5 ><span class="badge badge-danger"> Áreas não localizadas. </span></h5>
+                    </td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
@@ -35,20 +56,5 @@
 @endsection
 
 @section('page-script')
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-$(document).ready(function() {
-    $('#pretor-datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('areas.search') }}",
-        columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-        ]
-    });
-} );
-</script>
+
 @stop

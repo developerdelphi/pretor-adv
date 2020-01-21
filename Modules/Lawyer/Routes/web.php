@@ -17,9 +17,9 @@ Route::prefix('lawyer')->group(function() {
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/', 'LawyerController@index');
         Route::resource('areas', 'AreasController');
-
         Route::resource('entities', 'EntitiesController');
         Route::resource('kinds', 'KindsController');
+        Route::resource('processes', 'ProcessesController');
     });
 });
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProcessesTable extends Migration
+class CreateSituationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateProcessesTable extends Migration
      */
     public function up()
     {
-        Schema::create('processes', function (Blueprint $table) {
+        Schema::create('situation', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('archivy', 20);
-            $table->string('sts', 30);
-            $table->softDeletes();
-            $table->timestamps();
+            $table->string('name');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateProcessesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('processes');
+        Schema::dropIfExists('situation');
     }
 }

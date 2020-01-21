@@ -15,7 +15,7 @@ class CreateEntitiesTable extends Migration
     {
         Schema::create('entities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 191);
+            $table->string('name');
             $table->softDeletes();
             $table->timestamps();
         });

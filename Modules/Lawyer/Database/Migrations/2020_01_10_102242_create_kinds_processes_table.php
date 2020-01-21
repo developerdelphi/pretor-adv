@@ -13,14 +13,14 @@ class CreateKindsProcessesTable extends Migration
      */
     public function up()
     {
-        Schema::create('kinds_processes', function (Blueprint $table) {
+        Schema::create('kind_process', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('kind_id')->unsigned();
             $table->bigInteger('process_id')->unsigned();
             $table->bigInteger('entity_id')->unsigned();
             $table->string('number', 50)->nullable();
             $table->smallInteger('order')->default(0);
-            
+
             $table->foreign('kind_id')->references('id')->on('kinds');
             $table->foreign('process_id')->references('id')->on('processes');
             $table->foreign('entity_id')->references('id')->on('entities');

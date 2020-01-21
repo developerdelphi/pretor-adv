@@ -23,7 +23,7 @@
     <!-- Styles Datatables -->
 </head>
 <body>
-  <div id="app" >
+    <div id="app" >
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -61,8 +61,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -84,13 +84,12 @@
                 <!-- end Sidebar -->
                 </div>
                 <div class="col-sm py-3">
-                @include('sweetalert::alert')
-                @yield('content')
+                    @include('sweetalert::alert')
+                    @yield('content')
                 </div>
             </div>
         </main>
     </div>
-  </div>
-  @yield('page-script','')
+    @yield('page-script','')
 </body>
 </html>
