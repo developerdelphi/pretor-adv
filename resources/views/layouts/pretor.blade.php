@@ -86,6 +86,7 @@
                 <div class="col-sm py-3">
                     @include('sweetalert::alert')
                     @yield('content')
+                    @yield('footer-page')
                 </div>
             </div>
         </main>

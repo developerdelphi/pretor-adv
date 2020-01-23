@@ -46,13 +46,14 @@
             </tbody>
         </table>
     </div>
+    <div class="card-footer p-1 mb-0 ">
+        <div class="row justify-content-center">
+            {{ $entities->links() }}
+        </div>
+    </div>
 </div>
 @endsection
 
 @section('footer-page')
-<div class="card-footer p-1 mb-0 ">
-    <div class="row justify-content-center">
-        {{ $entities->links() }}
-    </div>
-</div>
+
 @endsection

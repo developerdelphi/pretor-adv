@@ -4,12 +4,12 @@
 <div class="card shadow">
     <div class="card-header bg-dark text-light">
         <div class="float-right">
-            <a href="{{ route('areas.create') }}" class="btn btn-sm btn-outline-secondary">
+            <a href="{{ route('personas.create') }}" class="btn btn-sm btn-outline-secondary">
                 <i class="fas fa-plus"></i></a>
         </div>
         <h3 class="card-title m-0 p-0">
             <i class="fas fa-file"></i>
-            <span class="d-inline mr-2">Áreas</span>
+            <span class="d-inline mr-2">Pessoas</span>
         </h3>
     </div>
     <div class="card-body">
@@ -19,16 +19,16 @@
                 <th class="text-right pr-2">Ações</th>
             </thead>
             <tbody>
-                @forelse($areas as $area)
+                @forelse($personas as $persona)
                 <tr>
-                    <td>{{ $area->name }}</td>
+                    <td>{{ $persona->name }}</td>
                     <td class="text-right">
-                        <form action="{{ route('areas.destroy', ['area'=> $area->id]) }}" method="post">
+                        <form action="{{ route('personas.destroy', ['persona'=> $persona->id]) }}" method="post">
                             @csrf
                             @method("DELETE")
                             <div class="btn-group" role="group">
-                                <a href="{{ route('areas.show', ['area'=> $area->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-folder-open"></i></a>
-                                <a href="{{ route('areas.edit', ['area'=> $area->id]) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{ route('personas.show', ['persona'=> $persona->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-folder-open"></i></a>
+                                <a href="{{ route('personas.edit', ['persona'=> $persona->id]) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
                                 <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
                             </div>
                         </form>
@@ -37,7 +37,7 @@
                 @empty
                 <tr>
                     <td>
-                        <h5 ><span class="badge badge-danger"> Áreas não localizadas. </span></h5>
+                        <h5 ><span class="badge badge-secondary"> Pessoas não localizadas. </span></h5>
                     </td>
                 </tr>
                 @endforelse
@@ -46,7 +46,7 @@
     </div>
     <div class="card-footer">
         <div class="row justify-content-center">
-            {{ $areas->links() }}
+            {{ $personas->links() }}
         </div>
     </div>
 </div>

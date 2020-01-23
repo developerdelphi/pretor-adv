@@ -5,6 +5,7 @@ namespace Modules\Lawyer\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Lawyer\Entities\Area;
 use Modules\Lawyer\Entities\Process;
 use Modules\Lawyer\Entities\Situation;
 use Modules\Lawyer\Http\Requests\ProcessRequest;
@@ -29,8 +30,12 @@ class ProcessesController extends Controller
      */
     public function create()
     {
+        $areaAll = Area::all();
+
+        $areas = $areaAll->fresh('kinds');
+
         $states = ["Ativo" => "Ativo", "Encerrado" => "Encerrado", "Suspenso" => "Suspenso"];
-        return view('lawyer::processes.create', compact('states'));
+        return view('lawyer::processes.create', compact('states', 'areas'));
     }
 
     /**
@@ -40,7 +45,10 @@ class ProcessesController extends Controller
      */
     public function store(ProcessRequest $request)
     {
+        dd($request->all());
         $process = Process::create($request->all());
+        $kind_process = $request->input('kind_process');
+        $process->kinds()->attach($kind_process);
         return redirect()->route('processes.show', compact('process'));
     }
 

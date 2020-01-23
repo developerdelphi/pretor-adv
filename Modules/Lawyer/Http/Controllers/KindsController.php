@@ -95,4 +95,12 @@ class KindsController extends Controller
             return redirect()->back()->withType('Classe Processual removida com sucesso!');
         }
     }
+
+    public function getKinds(Request $request)
+    {
+        $params = $request->all();
+        $data = Kind::where('area_id',$params['area_id'])->pluck('name', 'id');
+
+        if($request->ajax()) return response()->json($data);
+    }
 }

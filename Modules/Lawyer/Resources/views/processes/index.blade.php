@@ -36,7 +36,7 @@
                         <form action="{{ route('processes.destroy', ['process'=> $process->id]) }}" method="post">
                             @csrf
                             @method("DELETE")
-                            <div class="btn-group" role="group">
+                                <div class="btn-group" role="group">
                                 <a href="{{ route('processes.show', ['process'=> $process->id]) }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-folder-open"></i></a>
                                 <a href="{{ route('processes.edit', ['process'=> $process->id]) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-pencil-alt"></i></a>
                                 <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
@@ -54,13 +54,14 @@
             </tbody>
         </table>
     </div>
+    <div class="card-footer p-1 mb-0 ">
+        <div class="row justify-content-center">
+            {{ $processes->links() }}
+        </div>
+    </div>
 </div>
 @endsection
 
 @section('footer-page')
-<div class="card-footer p-1 mb-0 ">
-    <div class="row justify-content-center">
-        {{ $processes->links() }}
-    </div>
-</div>
+
 @endsection

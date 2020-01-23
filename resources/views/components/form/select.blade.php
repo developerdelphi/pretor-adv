@@ -1,5 +1,5 @@
-<div class="form-group {{ $errors->has(Arr::get($params, 'name')) ? 'has-error' : '' }}">
-    <label class="control-label">{{ Arr::get($params, 'label') }}</label>
+<div class="form-group m-0 {{ $errors->has(Arr::get($params, 'name')) ? 'has-error' : '' }}">
+    <label class="control-label m-0">{{ Arr::get($params, 'label') }}</label>
 
     {{
         Form::select(
@@ -7,7 +7,7 @@
             Arr::get($params, 'value'),
             null,
             [
-                'class' => 'form-control',
+                'class' => 'form-control form-control-sm',
                 Arr::get($params, 'required', false) ? 'required' : '',
             ]
         )

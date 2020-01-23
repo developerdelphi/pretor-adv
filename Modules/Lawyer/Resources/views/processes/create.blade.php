@@ -18,8 +18,11 @@
     <div class="card-body">
             {!! Form::open(['route' => 'processes.store', 'method' => 'POST']) !!}
             <div class="row align-items-center">
+                <div class="col-12">
+                    <pretor-select-complete></pretor-select-complete>
+                </div>
                 <div class="col-6">
-                    {{ Form::pretorInput(['name'=>'archivy','value'=>old('archivy'), 'label'=>'Número Pasta', 'placeholder'=>'Número da pasta de arquivamento', 'required'=>true], $errors) }}
+                    {{ Form::pretorInput(['name'=>'archivy','value'=>old('archivy'), 'label'=>'Número Pasta', 'placeholder'=>'Número da pasta de arquivamento', 'required'=>false], $errors) }}
                 </div>
                 <div class="col-6">
                     <div class="row align-items-center">

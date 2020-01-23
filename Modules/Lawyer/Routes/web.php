@@ -19,8 +19,16 @@ Route::prefix('lawyer')->group(function() {
         Route::resource('areas', 'AreasController');
         Route::resource('entities', 'EntitiesController');
         Route::resource('kinds', 'KindsController');
+        Route::resource('personas', 'PersonasController');
         Route::resource('processes', 'ProcessesController');
+       // Route::name(['processes'], function (){
+
+            Route::get('getAreas', 'AreasController@getAreas')->name('areas.getAreas');
+            Route::get('getKinds', 'KindsController@getKinds')->name('kinds.getAreas');
+        //});
+
     });
+
 });
 
 Route::get('areas/search','AreasController@search')->name('areas.search');

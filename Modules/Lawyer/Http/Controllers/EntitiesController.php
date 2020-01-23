@@ -16,7 +16,7 @@ class EntitiesController extends Controller
      */
     public function index()
     {
-        $entities = Entity::paginate(10);
+        $entities = Entity::paginate(5);
 
         return view('lawyer::entities.index', compact('entities'));
     }

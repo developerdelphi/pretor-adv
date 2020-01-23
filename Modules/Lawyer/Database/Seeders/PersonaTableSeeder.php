@@ -2,10 +2,12 @@
 
 namespace Modules\Lawyer\Database\Seeders;
 
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Lawyer\Entities\Persona;
 
-class LawyerDatabaseSeeder extends Seeder
+class PersonaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +17,8 @@ class LawyerDatabaseSeeder extends Seeder
     public function run()
     {
         //Model::unguard();
+        //$this->call("OthersTableSeeder");
 
-        $this->call("AreaTableSeeder");
-        $this->call("EntityTableSeeder");
-
+        factory(Persona::class, 60)->create();
     }
 }

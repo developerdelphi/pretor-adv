@@ -18,7 +18,7 @@ class AreasController extends Controller
      */
     public function index()
     {
-        $areas = Area::paginate(10);
+        $areas = Area::paginate(5);
         return view('lawyer::areas.index', compact('areas'));
     }
 
@@ -105,5 +105,13 @@ class AreasController extends Controller
         $area->forceDelete();
 
         return redirect()->route('areas.index')->withSuccess('Área excluída!');
+    }
+
+    public function getAreas(Request $request)
+    {
+
+        $data = Area::pluck('name', 'id');
+        //dd($data);
+        if ($request->ajax()) return response()->json($data);
     }
 }

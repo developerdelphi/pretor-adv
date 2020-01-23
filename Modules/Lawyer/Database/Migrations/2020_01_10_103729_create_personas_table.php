@@ -16,6 +16,7 @@ class CreatePersonasTable extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 191);
+            $table->json('qualifications')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
