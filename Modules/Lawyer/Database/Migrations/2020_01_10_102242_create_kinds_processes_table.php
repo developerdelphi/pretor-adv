@@ -34,6 +34,6 @@ class CreateKindsProcessesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kinds_processes');
+        Schema::dropIfExists('kind_process');
     }
 }

@@ -33,7 +33,9 @@ class AreaTableSeeder extends Seeder
         ];
         foreach ($data as $value) {
             # code...
-            Area::create(['name'=>$value]);
+            $origin = [];
+
+            Area::create(['name' => $value]);
         }
     }
 }

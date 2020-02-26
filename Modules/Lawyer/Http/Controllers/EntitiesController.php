@@ -10,13 +10,20 @@ use Modules\Lawyer\Http\Requests\EntityRequest;
 
 class EntitiesController extends Controller
 {
+    private $entity;
+
+    public function __construct(Entity $entity)
+    {
+        $this->entity = $entity;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        $entities = Entity::paginate(5);
+        $entities = $this->entity->orderBy('name')->paginate(5);
 
         return view('lawyer::entities.index', compact('entities'));
     }
@@ -81,11 +88,10 @@ class EntitiesController extends Controller
      */
     public function destroy(Entity $entity)
     {
-        if($entity->delete($entity->id)){
+        if ($entity->delete($entity->id)) {
             return redirect()->route('entities.index')->withSuccess('Entidade removida com sucesso!');
-        }else{
+        } else {
             return redirect()->back()->withType('Entidade removida com sucesso!');
         }
-
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentsTable extends Migration
+class CreateTablePersonas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('personas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('doctype_id')->unsigned();
-            $table->string('name');
-            $table->string('description', 191)->nullable();
-            $table->mediumText('content');
-            $table->string('sts',30)->nullable();
+            $table->string('name', 191);
+            $table->json('qualifications')->nullable();
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('doctype_id')->references('id')->on('doctypes');
         });
     }
 
@@ -34,6 +29,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('personas');
     }
 }

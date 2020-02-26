@@ -190,6 +190,9 @@ return [
         // Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
 
+        // Criação de menus
+        // Nwidart\Menus\MenusServiceProvider::class,
+
     ],
 
     /*
