@@ -21,6 +21,7 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "7.*",
+        "semantic-ui": "^2.4.2",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
     },
@@ -43,6 +44,7 @@
         "datatables.net-select-bs4": "^1.3.1",
         "icheck-bootstrap": "^3.0.1",
         "inputmask": "^5.0.2-beta.7",
-        "select2-bootstrap-theme": "0.1.0-beta.10"
+        "select2-bootstrap-theme": "0.1.0-beta.10",
+        "semantic-ui-icon": "^2.3.3"
     }
 }

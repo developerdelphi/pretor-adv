@@ -2,5 +2,10 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/all.css": "/css/all.css",
-    "/js/all.js": "/js/all.js"
+    "/js/all.js": "/js/all.js",
+    "/js/semantic.js": "/js/semantic.js",
+    "/css/semantic.css": "/css/semantic.css",
+    "/css/themes/default/assets/fonts/icons.woff": "/css/themes/default/assets/fonts/icons.woff",
+    "/css/themes/default/assets/fonts/icons.woff2": "/css/themes/default/assets/fonts/icons.woff2",
+    "/css/themes/default/assets/fonts/icons.ttf": "/css/themes/default/assets/fonts/icons.ttf"
 }

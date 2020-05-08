@@ -8,12 +8,12 @@ window._ = require('lodash');
 
 try {
     window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
-    require('datatables.net-bs4');
-    require('datatables.net-buttons-bs4');
+    // window.$ = window.jQuery = require('jquery');
+    // require('datatables.net-bs4');
+    // require('datatables.net-buttons-bs4');
     //window.$('#pretor-datatable').DataTable();
 
-    require('bootstrap');
+    // require('bootstrap');
     // datatables
     /*
     require( 'datatables.net-bs4' );

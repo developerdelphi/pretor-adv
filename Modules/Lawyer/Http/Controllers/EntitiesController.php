@@ -5,6 +5,7 @@ namespace Modules\Lawyer\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Arr;
 use Modules\Lawyer\Entities\Entity;
 use Modules\Lawyer\Http\Requests\EntityRequest;
 
@@ -21,11 +22,31 @@ class EntitiesController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $entities = $this->entity->orderBy('name')->paginate(5);
+        $entities = $this->entity;
 
-        return view('lawyer::entities.index', compact('entities'));
+        $search = [];
+        $search = Arr::add($search, 'name', $request->has('name') ? $request->get('name') : null);
+        $search = Arr::add($search, 'per_page', $request->has('per_page') ? $request->get('per_page') : 10);
+        $search = Arr::add($search, 'order', $request->has('order') ? $request->get('order') : 'name');
+        $search = Arr::add($search, 'order_type', $request->has('order_type') ? $request->get('order_type') : 'ASC');
+
+        if ($search['name']) {
+            $entities = $entities->where('name', 'like', '%' . $search['name'] . '%');
+        }
+
+        if (($search['order']) && ($search['order_type'] == 'DESC')) {
+            $entities = $entities->orderByDesc($search['order']);
+        } elseif ($search['order']) {
+            $entities = $entities->orderBy($search['order']);
+        }
+
+        $entities = $entities->paginate($search['per_page'])->appends($request->query());
+
+        // $entities = $this->entity->paginate($search['per_page']);
+
+        return view('lawyer::entities.index', compact('entities', 'search'));
     }
     /**
      * Show the form for creating a new resource.

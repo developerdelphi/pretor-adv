@@ -17,6 +17,8 @@ class CreateTablePersonas extends Migration
             $table->bigIncrements('id');
             $table->string('name', 191);
             $table->json('qualifications')->nullable();
+            $table->json('address')->nullable();
+            $table->json('phones')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
