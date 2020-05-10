@@ -16,9 +16,9 @@
         Cadastro
         <div class="menu">
             <a class="item" href="{{ route('personas.index') }}"><i class="icon male"></i>Pessoas</a>
-            <a class="item"><i class="icon file"></i>Áreas</a>
-            <a class="item"><i class="icon file"></i>Classes</a>
-            <a class="item"><i class="icon building"></i>Entidades</a>
+            <a class="item" href="{{ route('areas.index') }}"><i class="icon file"></i>Áreas</a>
+            <a class="item" href="{{ route('kinds.index') }}"><i class="icon file"></i>Classes</a>
+            <a class="item" href="{{ route('entities.index') }}"><i class="icon building"></i>Entidades</a>
         </div>
     </div>
     <div class="ui dropdown item">

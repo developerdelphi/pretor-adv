@@ -1,52 +1,70 @@
 @extends('layouts.pretor')
 
 @section('content')
-<div class="card shadow">
-    <div class="card-header bg-dark text-light">
-        <div class="float-right">
-        <a href="{{ route('kinds.index') }}" class="btn btn-sm btn-outline-light" data-toggle="tooltip" data-placement="top" title="Listar registros">
-            <i class="fas fa-list-alt"></i>
-        </a>
-        </div>
-        <h3 class="card-title m-0 p-0">
-        <i class="fas fa-list-alt"></i>
-        <span class="d-inline mr-2">Cadastro de Classes Processuais</span>
-        </h3>
-    </div>
-    <div class="card-body">
-        <dl class="row">
-        <dt class="col-sm-2 bg-dark text-light border-bottom border-light">Nome</dt>
-        <dd class="col-sm-10">{{ $kind->name }}</dd>
-        <dt class="col-sm-2 bg-dark text-light">Área Processual</dt>
-        <dd class="col-sm-10"><a class="badge badge-secondary" href="{{ route('areas.show', [$kind->area_id]) }}">{{ $kind->area->name }}</a></dd>
-        </dl>
-        <div class="row border-bottom pb-1 mb-1">
+<div class="container doubling stackable ui raised segment teal">
+    <div class="ui items">
+        <div class="item">
+            <div class="ui image">
+                <i class="building icon icon-header-size"></i>
+            </div>
+            <div class="middle align content">
+                <h2 class="ui header">Classe Processual
+                    <div class="sub header">
+                        <span>Informações da Classe Processual</span>
+                    </div>
+                </h2>
 
-        <div class="w-100 border-top border-secondary">
-            <form action="{{ route('kinds.destroy', ['kind'=> $kind->id]) }}" method="post">
-            @csrf
-            @method("DELETE")
-                <div class="btn-group float-right mt-1" role="group">
-                    <a href="{{ route('kinds.create') }}" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Novo cadastro">
+                <div class="description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="right floated">
+                <div class="ui mini icon buttons">
+                    <a href="{{ route('kinds.index') }}" class="ui button grey" title="Listar registros">
+                        <i class="fas fa-folder"></i>
+                    </a>
+                    <a href="{{ route('kinds.create') }}" class="ui button primary" data-toggle="tooltip"
+                        data-placement="top" title="Novo cadastro">
                         <i class="fas fa-plus"></i>
                     </a>
-                    <a href="{{ route('kinds.edit', ['kind'=> $kind->id]) }}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Editar cadastro">
+                    <a href="{{ route('kinds.edit', ['kind'=> $kind->id]) }}" class="ui button orange"
+                        title="Editar cadastro">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button type="submit" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Exluir do cadastro">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
+                    <form action="{{ route('kinds.destroy', ['kind'=> $kind->id]) }}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit" class="ui button red" data-toggle="tooltip" data-placement="top"
+                            title="Exluir do cadastro">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
+    </div>
+    <h4 class="ui horizontal divider header">
+        <i class="tag icon"></i>
+        Descrição das Informações
+    </h4>
+    <div class="ui internally celled grid container" style="{margin-top:10px;}">
+        <div class="row">
+            <div class="three wide column">
+                <h5>Nome:</h5>
+            </div>
+            <div class="nine wide column">
+                <p>{{ $kind->name }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="three wide column">
+                <h5>Área Processual:</h5>
+            </div>
+            <div class="nine wide column">
+                <a class="badge badge-secondary"
+                    href="{{ route('areas.show', [$kind->area_id]) }}">{{ $kind->area->name }}</a>
+            </div>
         </div>
     </div>
 </div>
-
-<script>
-  $(document).ready(function() {
-    $(":input").inputmask();
-
-  });
-</script>
 @endsection

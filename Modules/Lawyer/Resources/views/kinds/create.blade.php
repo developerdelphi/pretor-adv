@@ -5,17 +5,27 @@
 @endsection
 
 @section('content')
-<div class="card shadow">
-    <div class="card-header">
-        <div class="float-right">
-        <a href="{{ route('kinds.index') }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-folder"></i></a>
+<div class="container doubling stackable ui raised segment teal">
+    <div class="ui items divided">
+        <div class="item">
+            <div class="ui image">
+                <i class="fas fa-balance-scale-right icon-header-size"></i>
+            </div>
+            <div class="middle align content">
+                <h2 class="ui header">Criação de Classes Processuais <div class="sub header">
+                        <span>Nova classe de processo</span>
+                    </div>
+                </h2>
+            </div>
+            <div class="right floated">
+                <div class="ui mini icon buttons">
+                    <a href="{{ route('kinds.index') }}" class="ui button grey" title="Listar registros">
+                        <i class="fas fa-folder"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <h3 class="card-title m-0 p-0">
-            <i class="fas fa-file"></i>
-            <span class="d-inline mr-2">Nova Classe Processual</span>
-        </h3>
-    </div>
-    <div class="card-body">
+        <div class="ui form">
             {!! Form::open(['route' => 'kinds.store', 'method' => 'POST']) !!}
 
             {{ Form::pretorInput(
@@ -43,8 +53,11 @@
                     $errors
                 )
             }}
-        <hr>
-        {{ Form::pretorSubmit('Confirmar') }}
+            <hr>
+            <div class="ui buttons">
+                {{ Form::pretorSubmit('Confirmar') }}
+                <a href="{{route('kinds.index')}}" class="ui button grey">Cancelar</a>
+            </div>
+        </div>
     </div>
-</div>
-@endsection
+    @endsection

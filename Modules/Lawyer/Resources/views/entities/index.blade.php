@@ -1,14 +1,14 @@
 @extends('layouts.pretor')
 
 @section('content')
-<div class="container doubling stackable ui raised segment">
+<div class="container doubling stackable ui raised segment orange">
     <div class="ui items divided">
         <div class="item">
-            <div class="icon">
-                <i class="icon-header-size building icon orange"></i>
+            <div class="ui image">
+                <i class="fas fa-balance-scale-left icon-header-size"></i>
             </div>
             <div class="middle align content">
-                <h2 class="ui orange header">Gerenciamento de Entidades
+                <h2 class="ui header">Gerenciamento de Entidades
                     <div class="sub header">
                         <span>Cadastro de entidades públicas e privadas</span>
                     </div>
@@ -19,7 +19,10 @@
                 </div>
             </div>
             <div class="right floated">
-                <a class="ui button primary tiny" href="{{ route('entities.create') }}">Novo</a>
+                <a class="ui labeled icon button primary mini" href="{{ route('entities.create') }}">
+                    <i class=" icon plus"></i>
+                    Novo
+                </a>
             </div>
         </div>
         <div class="item" style="padding:5px 0 0 0;">
@@ -41,8 +44,8 @@
         </div>
 
         <div class="item">
-            <table class="ui table compact celled striped selectable orange">
-                <thead class="bg-light text-dark text-md-center">
+            <table class="ui table compact celled striped selectable teal">
+                <thead class="">
                     <th>Nome</th>
                     <th class="center aligned">Ações</th>
                 </thead>
@@ -52,18 +55,18 @@
                         <td>{{ $entity->name }}</td>
 
                         <td class="right aligned">
-                            <form action="{{ route('entities.destroy', ['entity'=> $entity->id]) }}" method="post">
-                                @csrf
-                                @method("DELETE")
-                                <div class="ui mini buttons icon" style="padding:0; margin:0;">
-                                    <a href="{{ route('entities.show', ['entity'=> $entity->id]) }}"
-                                        class="ui button yellow"><i class="icon folder open"></i></a>
-                                    <a href="{{ route('entities.edit', ['entity'=> $entity->id]) }}"
-                                        class="ui button mini orange"><i class="icon pencil alt"></i></a>
+                            <div class="ui mini buttons icon" style="padding:0; margin:0;">
+                                <a href="{{ route('entities.show', ['entity'=> $entity->id]) }}"
+                                    class="ui button grey"><i class="icon folder open"></i></a>
+                                <a href="{{ route('entities.edit', ['entity'=> $entity->id]) }}"
+                                    class="ui button mini orange"><i class="icon pencil alt"></i></a>
+                                <form action="{{ route('entities.destroy', ['entity'=> $entity->id]) }}" method="post">
+                                    @csrf
+                                    @method("DELETE")
                                     <button type="submit" class="ui button mini red icon"><i
                                             class="icon trash"></i></button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @empty

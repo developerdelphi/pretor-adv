@@ -1,1 +1,1 @@
-<button type="submit" name="button" class="btn btn-sm btn-outline-primary float-right" >{{ $label}}</button>
+<button type="submit" name="button" class="ui positive button">{{ $label}}</button>

@@ -1,20 +1,34 @@
 @extends('layouts.pretor')
 
 @section('content')
-<div class="card shadow">
-    <div class="card-header">
-        <div class="float-right">
-        <a href="{{ route('kinds.index') }}" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Listar Classe Processuais">
-            <i class="fas fa-list-alt"></i>
-        </a>
+<div class="container doubling stackable ui raised segment teal">
+    <div class="ui items divided">
+        <div class="item">
+            <div class="ui image">
+                <i class="fas fa-balance-scale-right icon-header-size"></i>
+            </div>
+            <div class="middle align content">
+                <h2 class="ui header">Atualização de Classes Processuais
+                    <div class="sub header">
+                        <span>Atualização de classes processuais administrativas e judiciais</span>
+                    </div>
+                </h2>
+            </div>
+            <div class="right floated">
+                <div class="ui mini icon buttons">
+                    <a href="{{ route('kinds.index') }}" class="ui button grey" title="Listar registros">
+                        <i class="fas fa-folder"></i>
+                    </a>
+                    <a href="{{ route('kinds.create') }}" class="ui button primary" data-toggle="tooltip"
+                        data-placement="top" title="Novo cadastro">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <h3 class="card-title m-0 p-0">
-            <i class="fas fa-list-alt"></i>
-            <span class="d-inline mr-2">Atualizar Classe Processual</span>
-        </h3>
     </div>
-    <div class="card-body">
-    {!! Form::model($kind,['route' => ['kinds.update', $kind->id], 'method' => 'PUT']) !!}
+    <div class="ui form">
+        {!! Form::model($kind,['route' => ['kinds.update', $kind->id], 'method' => 'PUT']) !!}
         {{ Form::pretorInput(
                     [
                         'name'=>'name',
@@ -42,20 +56,12 @@
                     )
                 }}
             </div>
-            <div class="col-1 m-0 pl-0">
-                <div class="btn-group" role="group">
-                    <a href="{{ route('areas.index') }}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Listar Áreas"><i class="fas fa-list-alt"></i></a>
-                    <a href="{{ route('areas.create') }}" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Adicinar Áreas"><i class="fas fa-plus"></i></a>
-                </div>
-            </div>
         </div>
         <hr>
-        {{ Form::pretorSubmit('Confirmar') }}
+        <div class="ui buttons">
+            {{ Form::pretorSubmit('Confirmar') }}
+            <a href="{{route('kinds.index')}}" class="ui button grey">Cancelar</a>
+        </div>
     </div>
 </div>
-<script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    }
-</script>
 @endsection

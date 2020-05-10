@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateTablePersonas extends Migration
+class CreatePersonasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,7 @@ class CreateTablePersonas extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 191);
-            $table->json('qualifications')->nullable();
-            $table->json('address')->nullable();
-            $table->json('phones')->nullable();
+            $table->morphs('personable');
             $table->softDeletes();
             $table->timestamps();
         });
